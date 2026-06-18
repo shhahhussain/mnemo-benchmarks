@@ -1,0 +1,54 @@
+{
+  "benchmark": "LongMemEval-S",
+  "dataset_file": "longmemeval_s_cleaned.json (2025-09 cleaned release)",
+  "run_id": "2026-06-15",
+  "run_date": "2026-06-15",
+  "system_under_test": "Mnemo - Claude Haiku 4.5 reader with suspect-routing escalation to Claude Sonnet 4.6; OpenAI text-embedding-3-small for embeddings",
+  "judge_model": "openai gpt-4o-mini (frozen; graded 0..1 score gated at 1.0; differs from the original LongMemEval binary GPT-4o judge)",
+  "scoring": "strict - a question is correct IFF judge score == 1.0",
+  "overall": {
+    "correct": 404,
+    "total": 500,
+    "strict_accuracy_pct": 80.8
+  },
+  "per_category": [
+    {
+      "category": "single-session-user",
+      "correct": 62,
+      "total": 70,
+      "strict_accuracy_pct": 88.6
+    },
+    {
+      "category": "single-session-assistant",
+      "correct": 49,
+      "total": 56,
+      "strict_accuracy_pct": 87.5
+    },
+    {
+      "category": "single-session-preference",
+      "correct": 19,
+      "total": 30,
+      "strict_accuracy_pct": 63.3
+    },
+    {
+      "category": "knowledge-update",
+      "correct": 66,
+      "total": 78,
+      "strict_accuracy_pct": 84.6
+    },
+    {
+      "category": "multi-session",
+      "correct": 101,
+      "total": 133,
+      "strict_accuracy_pct": 75.9
+    },
+    {
+      "category": "temporal-reasoning",
+      "correct": 107,
+      "total": 133,
+      "strict_accuracy_pct": 80.5
+    }
+  ],
+  "noise_bar_pp": 1.7,
+  "oracle_union_ceiling_pct": 87.8
+}
