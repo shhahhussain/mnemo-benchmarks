@@ -1,6 +1,6 @@
 # Mnemo benchmarks
 
-Mnemo is a long-term memory layer for AI agents (https://mnemohq.com). On LongMemEval-S it scores 80.8% strict (404/500) under a gpt-4o-mini judge with a score==1.0 correctness gate.
+Mnemo is a long-term memory layer for AI agents (https://mnemohq.com). On LongMemEval-S it scores 80.8% strict (404/500) under our own gpt-4o-mini judge with a score==1.0 correctness gate, and 85.4% (427/500) under the official LongMemEval evaluation prompts (judge model gpt-5-mini).
 
 This repository contains the methodology and results behind that number. It does not contain the Mnemo engine source code - results and reproduction details only.
 
@@ -25,6 +25,27 @@ LongMemEval-S, 500 questions, strict scoring (a question counts as correct only 
 | Overall | 404 / 500 | 80.8% |
 
 Raw per-question results: [results/longmemeval-s-2026-06-15-per-question.jsonl](results/longmemeval-s-2026-06-15-per-question.jsonl). Computed summary: [results/longmemeval-s-2026-06-15-summary.json](results/longmemeval-s-2026-06-15-summary.json).
+
+## Result (official LongMemEval prompts)
+
+The number above uses our own strict judge (a graded gpt-4o-mini gated at exactly 1.0). For a result under the **original LongMemEval evaluation prompts** — the per-question-type yes/no judge from the paper's `evaluate_qa.py`, which credits an answer that contains or is equivalent to the correct one and forgives off-by-one day errors on temporal questions — we re-judged the same 500 hypotheses (identical answers; only the judge changed).
+
+- Overall: 427/500 = 85.4% (official LongMemEval prompts, judge model `gpt-5-mini` 2025-08-07)
+- Run date: 2026-06-26
+
+### Per-category (official prompts, gpt-5-mini judge)
+
+| Category | Correct / Total | Accuracy |
+|---|---|---|
+| single-session-user | 67 / 70 | 95.7% |
+| single-session-assistant | 51 / 56 | 91.1% |
+| knowledge-update | 69 / 78 | 88.5% |
+| temporal-reasoning | 117 / 133 | 88.0% |
+| multi-session | 103 / 133 | 77.4% |
+| single-session-preference | 20 / 30 | 66.7% |
+| Overall | 427 / 500 | 85.4% |
+
+The gap from the strict number (80.8% to 85.4%) is the judge, not the system: the same hypotheses scored under a looser, partial-credit rubric. Judge model note: the LongMemEval paper's judge is a prompt-engineered GPT-4o; we ran the same prompts with `gpt-5-mini` (`reasoning_effort=minimal`). The prompts are the paper's; the judge model is not. Methodology and reproduction: [methodology/official-prompts.md](methodology/official-prompts.md). Summary: [results/longmemeval-s-official-prompts-2026-06-26-summary.json](results/longmemeval-s-official-prompts-2026-06-26-summary.json).
 
 ## Improvement over the prior run
 
