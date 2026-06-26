@@ -1,0 +1,21 @@
+{
+  "benchmark": "LongMemEval-S",
+  "dataset_file": "longmemeval_s_cleaned.json",
+  "n": 500,
+  "evaluation": "official LongMemEval prompts (evaluate_qa.py get_anscheck_prompt, per-question-type yes/no, verbatim)",
+  "judge_model": "gpt-5-mini",
+  "judge_model_version": "2025-08-07",
+  "judge_params": { "reasoning_effort": "minimal", "decision": "yes/no" },
+  "run_date": "2026-06-26",
+  "hypotheses_source": "same answers as longmemeval-s-2026-06-15 (strict 404/500); only the judge changed",
+  "overall": { "correct": 427, "total": 500, "accuracy": 0.854 },
+  "per_category": {
+    "single-session-user": { "correct": 67, "total": 70, "accuracy": 0.957 },
+    "single-session-assistant": { "correct": 51, "total": 56, "accuracy": 0.911 },
+    "knowledge-update": { "correct": 69, "total": 78, "accuracy": 0.885 },
+    "temporal-reasoning": { "correct": 117, "total": 133, "accuracy": 0.880 },
+    "multi-session": { "correct": 103, "total": 133, "accuracy": 0.774 },
+    "single-session-preference": { "correct": 20, "total": 30, "accuracy": 0.667 }
+  },
+  "note": "The LongMemEval paper's judge is a prompt-engineered GPT-4o; here the same prompts are run with gpt-5-mini. The prompts are the paper's, the judge model is not."
+}

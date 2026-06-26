@@ -1,6 +1,12 @@
 # Changelog
 
-All results use the strict scoring rule defined in [methodology/strict-scoring.md](methodology/strict-scoring.md): a question is correct only when the frozen judge scores it exactly 1.0. The judge and threshold are unchanged across every entry below, so the numbers are directly comparable.
+Unless an entry says otherwise, results use the strict scoring rule defined in [methodology/strict-scoring.md](methodology/strict-scoring.md): a question is correct only when the frozen judge scores it exactly 1.0. The strict entries hold the judge and threshold fixed, so they are directly comparable. The 2026-06-26 entry is a separate scoring of the same answers under the official LongMemEval prompts and is labeled as such.
+
+## 2026-06-26 - Official LongMemEval prompts (85.4%, gpt-5-mini judge)
+
+- Second scoring of the same 2026-06-15 answers under the original LongMemEval evaluation prompts (`evaluate_qa.py` `get_anscheck_prompt`, verbatim), judge model `gpt-5-mini` (2025-08-07): 427/500 = 85.4%.
+- This is NOT the strict gate used by the entries below - it is the paper's looser, partial-credit rubric (it also forgives off-by-one day errors on temporal-reasoning). The system under test is unchanged; only the judge differs. Reported alongside the strict 80.8% for transparency, not as a replacement for it.
+- Methodology: [methodology/official-prompts.md](methodology/official-prompts.md). Summary: `results/longmemeval-s-official-prompts-2026-06-26-summary.json`.
 
 ## 2026-06-19 - Live product configuration
 
