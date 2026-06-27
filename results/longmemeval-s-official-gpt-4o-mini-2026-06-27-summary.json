@@ -1,0 +1,51 @@
+{
+  "benchmark": "LongMemEval-S",
+  "dataset_file": "longmemeval_s_cleaned.json (2025-09 cleaned release)",
+  "n": 500,
+  "evaluation": "official LongMemEval prompts (evaluate_qa.py get_anscheck_prompt, per-question-type yes/no, verbatim)",
+  "judge_model": "openai gpt-4o-mini",
+  "judge_params": {
+    "temperature": 0,
+    "decision": "yes/no"
+  },
+  "run_date": "2026-06-27",
+  "hypotheses_source": "same answers as longmemeval-s-2026-06-15 (strict 404/500); only the judge prompt changed",
+  "overall": {
+    "correct": 426,
+    "total": 500,
+    "accuracy_pct": 85.2
+  },
+  "per_category": {
+    "single-session-user": {
+      "correct": 67,
+      "total": 70,
+      "accuracy_pct": 95.7
+    },
+    "multi-session": {
+      "correct": 103,
+      "total": 133,
+      "accuracy_pct": 77.4
+    },
+    "single-session-preference": {
+      "correct": 25,
+      "total": 30,
+      "accuracy_pct": 83.3
+    },
+    "temporal-reasoning": {
+      "correct": 115,
+      "total": 133,
+      "accuracy_pct": 86.5
+    },
+    "knowledge-update": {
+      "correct": 67,
+      "total": 78,
+      "accuracy_pct": 85.9
+    },
+    "single-session-assistant": {
+      "correct": 49,
+      "total": 56,
+      "accuracy_pct": 87.5
+    }
+  },
+  "note": "Official LongMemEval judge PROMPTS (verbatim). Judge MODEL is gpt-4o-mini, not the paper's GPT-4o; stated for transparency. Strict exact-match cross-check: 404/500 = 80.8%."
+}

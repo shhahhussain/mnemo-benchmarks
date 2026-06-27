@@ -1,12 +1,13 @@
 # Changelog
 
-Unless an entry says otherwise, results use the strict scoring rule defined in [methodology/strict-scoring.md](methodology/strict-scoring.md): a question is correct only when the frozen judge scores it exactly 1.0. The strict entries hold the judge and threshold fixed, so they are directly comparable. The 2026-06-26 entry is a separate scoring of the same answers under the official LongMemEval prompts and is labeled as such.
+The headline number uses the official LongMemEval evaluation prompts (the paper's per-question-type yes/no judge). We also report a stricter in-house exact-match gate as a conservative cross-check: a question is correct only when the frozen judge scores it exactly 1.0. Both use the same `gpt-4o-mini` judge, held fixed, so they are directly comparable.
 
-## 2026-06-26 - Official LongMemEval prompts (85.4%, gpt-5-mini judge)
+## 2026-06-27 - Official LongMemEval prompts (85.2%, gpt-4o-mini judge) — headline
 
-- Second scoring of the same 2026-06-15 answers under the original LongMemEval evaluation prompts (`evaluate_qa.py` `get_anscheck_prompt`, verbatim), judge model `gpt-5-mini` (2025-08-07): 427/500 = 85.4%.
-- This is NOT the strict gate used by the entries below - it is the paper's looser, partial-credit rubric (it also forgives off-by-one day errors on temporal-reasoning). The system under test is unchanged; only the judge differs. Reported alongside the strict 80.8% for transparency, not as a replacement for it.
-- Methodology: [methodology/official-prompts.md](methodology/official-prompts.md). Summary: `results/longmemeval-s-official-prompts-2026-06-26-summary.json`.
+- Scored the 2026-06-15 answers under the original LongMemEval evaluation prompts (`evaluate_qa.py` `get_anscheck_prompt`, verbatim), judge model `gpt-4o-mini`, temperature 0: 426/500 = 85.2%. This is the headline number.
+- This is the paper's looser, partial-credit-aware rubric (it also forgives off-by-one day errors on temporal-reasoning), not the strict 1.0 gate below. The system under test is unchanged; only the scoring rubric differs. Reported alongside the strict 80.8% for transparency.
+- Same judge model (`gpt-4o-mini`) as every other entry here — only the prompt differs between the official and strict numbers.
+- Methodology: [methodology/official-prompts.md](methodology/official-prompts.md). Summary: `results/longmemeval-s-official-gpt-4o-mini-2026-06-27-summary.json`. Per-question verdicts: `results/longmemeval-s-official-gpt-4o-mini-2026-06-27-per-question.jsonl`.
 
 ## 2026-06-19 - Live product configuration
 
